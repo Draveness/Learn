@@ -17,3 +17,15 @@ accMax([],A,A).
 max(List,Max):-
     [H|_] = List,
     accMax(List,H,Max).
+
+
+increment(X,Y):-
+    Y is X+1.
+
+sum(X,Y,Z):-
+    Z is X+Y.
+
+addOne([],[]).
+addOne([X|Xs],[Y|Ys]):-
+    Y is X + 1,
+    addOne(Xs,Ys).
