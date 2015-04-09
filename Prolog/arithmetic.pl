@@ -15,5 +15,5 @@ accMax([H|T],A,Max):-
 accMax([],A,A).
 
 max(List,Max):-
-    List = [H|_],
+    [H|_] = List,
     accMax(List,H,Max).
