@@ -5,3 +5,12 @@ accLen([_|T],A,L):-Anew is A+1,accLen(T,Anew,L).
 accLen([],A,A).
 
 length(List,Length):-accLen(List,0,Length).
+
+accMax([H|T],A,Max):-
+    H > A,
+    accMax(T,H,Max).
+
+accMax([H|T],A,Max):-
+    H=<A,
+    accMax(T,A,Max).
+accMax([],A,A).
