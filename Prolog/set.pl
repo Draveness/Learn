@@ -14,4 +14,4 @@ set([H|T],Acc,OutList):-
     set(T,Acc,OutList).
 set([H|T],Acc,OutList):-
     set(T,[H|Acc],OutList).
-set([H|T],OutList):-set(T,H,OutList).
+set([H|T],OutList):-set(T,[H],OutList).
