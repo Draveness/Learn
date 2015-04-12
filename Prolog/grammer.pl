@@ -1,6 +1,6 @@
 s(Z) :-
     np(X),
-    vp(X),
+    vp(Y),
     append(X,Y,Z).
 np(Z) :-
     det(X),
