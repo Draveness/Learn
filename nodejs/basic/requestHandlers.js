@@ -35,9 +35,10 @@ function upload(response, request) {
 		response.write("received image:<br/>");
 		response.write("<img src='/show' />");
 		response.end();
+	});
 }
 
-function show(response, postData) {
+function show(response) {
 	console.log("Request handler 'show' was called.");
 	fs.readFile("/tmp/test.png", "binary", function(error, file) {
 		if (error) {
