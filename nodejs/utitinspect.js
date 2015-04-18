@@ -12,5 +12,3 @@ var obj = new Person();
 
 console.log(util.inspect(obj));
 console.log(util.inspect(obj, true));
-
-
