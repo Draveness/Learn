@@ -9,12 +9,14 @@ var MongoStore = require('connect-mongo')(session);
 
 var routes = require('./routes/index');
 var settings = require('./settings');
+var flash = require('connect-flash');
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.use(flash())
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
