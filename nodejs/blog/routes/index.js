@@ -16,9 +16,9 @@ module.exports = function(app) {
 			password_re = req.body['password-repeat'];
 
 		if (password_re != password) {
-			req.flash('error', 'Different between inputs');
+			req.flash('error', 'Different between two passwords!');
 			return res.redirect('/reg');
-		};
+		}
 
 		var md5 = crypto.createHash('md5'),
 			password = md5.update(req.body.password).digest('hex');
@@ -31,19 +31,19 @@ module.exports = function(app) {
 		User.get(newUser.name, function(err, user) {
 			if (err) {
 				req.flash('error', err);
-				return res.redirect('/reg');
+				return res.redirect('/');
 			}
 			if (user) {
 				req.flash('error', 'User already exists!');
 				return res.redirect('/reg');
-			};
+			}
 
 			newUser.save(function(err, user) {
 				if (err) {
 					req.flash('error', err);
 					return res.redirect('/reg');
 				};
-				res.session.user = user;
+				req.session.user = user;
 				req.flash('success', 'Register successful!');
 				res.redirect('/');
 			});

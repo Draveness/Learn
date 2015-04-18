@@ -20,13 +20,13 @@ User.prototype.save = function(callback) {
 			return callback(err);
 		}
 
-		db.connection('users', function(err, connection) {
+		db.collection('users', function(err, collection) {
 			if (err) {
 				mongodb.close();
 				return callback(err);
 			}
 
-			connection.insert(user, {
+			collection.insert(user, {
 				safe: true
 			}, function(err, user) {
 				mongodb.close();
@@ -42,7 +42,6 @@ User.prototype.save = function(callback) {
 User.get = function(name, callback) {
 	mongodb.open(function(err, db) {
 		if (err) {
-			mongodb.close();
 			return callback(err);
 		}
 
@@ -52,7 +51,7 @@ User.get = function(name, callback) {
 				return callback(err);
 			};
 
-			connection.findOne({
+			collection.findOne({
 				name: name
 			}, function(err, user) {
 				mongodb.close();
