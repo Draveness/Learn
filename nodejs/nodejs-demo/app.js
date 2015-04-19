@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var movie = require('./routes/movie')
 
 var app = express();
 
@@ -58,3 +59,8 @@ app.use(function(err, req, res, next) {
 
 
 module.exports = app;
+
+app.get('/movie/add',movie.movieAdd);
+app.post('/movie/add',movie.doMovieAdd);
+app.get('/movie/:name',movie.movieAdd);
+app.get('/movie/json/:name',movie.movieJSON);
