@@ -18,9 +18,9 @@ router.post('/adduser', function(req, res) {
 	});
 });
 
-router.delete('/deleteuser/:id', function(req, res) {
+router.get('/deleteuser', function(req, res) {
 	var db = req.db;
-	var userToDelete = req.params.id;
+	var userToDelete = req.query.id;
 	db.collection('userlist').removeById(userToDelete, function (err, result) {
 		res.send((result === 1) ? { msg: '' } : { msg:'error: ' + err })
 	})
