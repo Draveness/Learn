@@ -14,7 +14,7 @@ function send404(response) {
 function sendFile(response, filePath, fileContents) {
 	response.writeHead(
 			200,
-			{"Content-type": mime.lookup(path.basename(filepath))}
+			{"Content-type": mime.lookup(path.basename(filePath))}
 			);
 	response.end(fileContents);
 }
@@ -54,5 +54,8 @@ var server = http.createServer(function(request, response) {
 });
 
 server.listen(3000, function() {
-    console.log("Server listening on port 3000.");
+  console.log("Server listening on port 3000.");
 });
+
+var chatServer = require('./lib/char_server');
+chatServer.listen(server);
