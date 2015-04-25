@@ -21,7 +21,7 @@ exports.listen = function(server) {
 
         handleClientDisconnection(socket, nickNames, namesUsed);
     });
-});
+};
 
 function assignGuestName(socket, guestNumber, nickNames, namesUsed) {
     var name = 'Guest' + guestNumber;
@@ -32,7 +32,7 @@ function assignGuestName(socket, guestNumber, nickNames, namesUsed) {
     });
     namesUsed.push(name);
     return guestNumber + 1;
-});
+};
 
 function joinRoom(socket, room) {
     socket.join(room);
