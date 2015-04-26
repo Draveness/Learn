@@ -7,9 +7,9 @@ var currentRoom = {};
 
 exports.listen = function(server) {
     io = socketio.listen(server);
-    io.set('log server', 1);
+    io.set('log level', 1);
     io.sockets.on('connection', function(socket) {
-        guestNumber = assignGuestName(socket, guestNumber, nickNames, namsUsed);
+        guestNumber = assignGuestName(socket, guestNumber, nickNames, namesUsed);
         joinRoom(socket, 'Lobby');
 
         handleMessageBroadcasting(socket, nickNames);
@@ -39,7 +39,7 @@ function joinRoom(socket, room) {
     currentRoom[socket.id] = room;
     socket.emit('joinResult', {room: room});
     socket.broadcast.to(room).emit('message', {
-        text: nickNames[socket.io] + ' has joined ' + room + '.'
+        text: nickNames[socket.id] + ' has joined ' + room + '.'
     });
 
     var usersInRoom = io.sockets.clients(room);
@@ -48,7 +48,7 @@ function joinRoom(socket, room) {
         for (var index in usersInRoom) {
             var userSocketId = usersInRoom[index].id;
             if (userSocketId != socket.id) {
-                if (index > -1) {
+                if (index > 0) {
                     usersInRoomSummary += ', ';
                 }
                 usersInRoomSummary += nickNames[userSocketId];
