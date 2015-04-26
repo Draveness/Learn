@@ -16,10 +16,12 @@ var server = http.createServer(function(req, res) {
             });
             break;
         case 'GET':
-            items.forEach(function(item, i) {
+            var body = items.forEach(function(item, i) {
                 res.write(i + ') ' + item + '\n');
-            });
-            res.end();
+            }).join('\n');
+            res.setHeader('Content-Length', Buffer.byteLength(body));
+            res.setHeader('Content-Type', 'text/plain; charset="utf-8"');
+            res.end(body);
             break;
     }
 }).listen(3000)
