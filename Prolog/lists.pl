@@ -1,2 +1,0 @@
-[mias, vincent, jules, yolanda].
-
