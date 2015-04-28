@@ -1,0 +1,19 @@
+# coding: utf-8
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
+Gem::Specification.new do |spec|
+    spec.name          = "NAME"
+    spec.version       = '1.0'
+    spec.authors       = ["Draveness"]
+    spec.email         = ["stark.draven@gmail.com"]
+    spec.summary       = %q{Short summary of your project}
+    spec.description   = %q{Longer description of your project.}
+    spec.homepage      = "http://deltaX.me"
+    spec.license       = "MIT"
+    
+    spec.files         = ['lib/ex47.rb']
+    spec.executables   = ['bin/ex47']
+    spec.test_files    = ['test/test_ex47.rb']
+    spec.require_paths = ["lib"]
+end
